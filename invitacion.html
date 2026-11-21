@@ -1,0 +1,2139 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Invitación Oficial | XIX Aniversario EPISI UNAM 2026</title>
+    
+    <!-- Meta tags sociales / OpenGraph -->
+    <meta name="description" content="Invitación oficial a las celebraciones del XIX Aniversario de la Escuela Profesional de Ingeniería de Sistemas e Informática (EPISI - UNAM) en Filial Ilo." />
+    <meta property="og:title" content="XIX Aniversario EPISI UNAM 2026" />
+    <meta property="og:description" content="Acompáñanos en la celebración de nuestro 19° Aniversario a partir de este sábado 21 de noviembre en la Filial Ilo. ¡Confirma tu asistencia!" />
+    <meta property="og:type" content="website" />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,600;0,700;0,800;0,900;1,700&family=Poppins:wght@300;400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap"
+      rel="stylesheet"
+    />
+    
+    <!-- Font Awesome 6 -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+
+    <!-- Canvas Confetti para efecto festivo -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
+
+    <style>
+      :root {
+        --unam-blue: #0f224a;
+        --unam-deep: #081127;
+        --unam-cyan: #00d2ff;
+        --unam-cyan-glow: rgba(0, 210, 255, 0.45);
+        --episi-gold: #ffb703;
+        --episi-gold-dark: #d49000;
+        --episi-gold-glow: rgba(255, 183, 3, 0.35);
+        --accent-emerald: #10b981;
+        --dark-bg: #070d1a;
+        --dark-surface: #0f172a;
+        --dark-card: rgba(17, 24, 39, 0.85);
+        --light-bg: #f8fafc;
+        --text-white: #ffffff;
+        --text-slate: #cbd5e1;
+        --text-dark: #0f172a;
+        --text-muted: #64748b;
+        --border-glass: rgba(255, 255, 255, 0.12);
+        --radius-lg: 20px;
+        --radius-xl: 28px;
+        --transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family: "Poppins", sans-serif;
+        background-color: var(--dark-bg);
+        color: var(--text-dark);
+        overflow-x: hidden;
+        line-height: 1.6;
+      }
+
+      /* =========================================================
+         PANTALLA 1: INVITACIÓN VIP DIGITAL (TICKET STYLE)
+      ========================================================== */
+      #invitation-screen {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 24px 16px;
+        background: 
+          radial-gradient(circle at 15% 15%, rgba(0, 210, 255, 0.18) 0%, transparent 40%),
+          radial-gradient(circle at 85% 85%, rgba(255, 183, 3, 0.15) 0%, transparent 40%),
+          linear-gradient(135deg, #060b14 0%, #0c182f 50%, #070d19 100%);
+        position: relative;
+        overflow: hidden;
+        transition: opacity 0.5s ease, transform 0.5s ease;
+      }
+
+      /* Glows ambientales */
+      .ambient-glow-1 {
+        position: absolute;
+        top: -100px;
+        right: -100px;
+        width: 450px;
+        height: 450px;
+        background: var(--unam-cyan);
+        filter: blur(150px);
+        opacity: 0.18;
+        border-radius: 50%;
+        pointer-events: none;
+      }
+
+      .ambient-glow-2 {
+        position: absolute;
+        bottom: -100px;
+        left: -100px;
+        width: 400px;
+        height: 400px;
+        background: var(--episi-gold);
+        filter: blur(160px);
+        opacity: 0.14;
+        border-radius: 50%;
+        pointer-events: none;
+      }
+
+      /* Fondo de rejilla tecnológica */
+      .tech-grid {
+        position: absolute;
+        inset: 0;
+        background-image: 
+          linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+          linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+        background-size: 38px 38px;
+        pointer-events: none;
+      }
+
+      .invitation-card {
+        background: rgba(255, 255, 255, 0.98);
+        max-width: 680px;
+        width: 100%;
+        border-radius: var(--radius-xl);
+        padding: 44px 38px 36px;
+        text-align: center;
+        box-shadow: 
+          0 25px 60px -15px rgba(0, 0, 0, 0.75),
+          0 0 0 1px rgba(255, 255, 255, 0.8) inset,
+          0 0 40px rgba(0, 210, 255, 0.2);
+        position: relative;
+        z-index: 10;
+        animation: floatUp 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        border: 1px solid rgba(255, 255, 255, 0.4);
+      }
+
+      @keyframes floatUp {
+        from {
+          opacity: 0;
+          transform: translateY(40px) scale(0.96);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0) scale(1);
+        }
+      }
+
+      /* Top Ribbon / Badge */
+      .ticket-ribbon {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: linear-gradient(135deg, #0f224a 0%, #1e3a8a 100%);
+        color: #f8fafc;
+        padding: 7px 18px;
+        border-radius: 50px;
+        font-size: 0.82rem;
+        font-weight: 700;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        margin-bottom: 22px;
+        box-shadow: 0 4px 12px rgba(15, 34, 74, 0.25);
+        border: 1px solid rgba(0, 210, 255, 0.3);
+      }
+
+      .ticket-ribbon i {
+        color: var(--episi-gold);
+        animation: pulseIcon 2s infinite ease-in-out;
+      }
+
+      @keyframes pulseIcon {
+        0%, 100% { transform: scale(1); }
+        50% { transform: scale(1.25); }
+      }
+
+      .logos-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 28px;
+        margin-bottom: 20px;
+        flex-wrap: wrap;
+      }
+
+      .logos-container img {
+        height: 78px;
+        width: auto;
+        object-fit: contain;
+        transition: transform 0.3s ease;
+        filter: drop-shadow(0 4px 6px rgba(0,0,0,0.08));
+      }
+
+      .logos-container img:hover {
+        transform: scale(1.08);
+      }
+
+      .divider-v {
+        width: 2px;
+        height: 55px;
+        background: linear-gradient(to bottom, transparent, #cbd5e1, transparent);
+      }
+
+      .uni-title {
+        font-family: "Montserrat", sans-serif;
+        font-size: 1.28rem;
+        font-weight: 800;
+        color: var(--unam-blue);
+        letter-spacing: 0.5px;
+        text-transform: uppercase;
+        margin-bottom: 4px;
+      }
+
+      .career-subtitle {
+        font-size: 0.92rem;
+        font-weight: 600;
+        color: #0284c7;
+        text-transform: uppercase;
+        letter-spacing: 0.8px;
+        margin-bottom: 24px;
+      }
+
+      .event-main-box {
+        background: linear-gradient(135deg, rgba(15, 34, 74, 0.04) 0%, rgba(0, 210, 255, 0.08) 100%);
+        border-radius: 18px;
+        padding: 22px 20px;
+        margin-bottom: 26px;
+        border: 1px dashed #93c5fd;
+        position: relative;
+      }
+
+      .invite-heading {
+        font-family: "Montserrat", sans-serif;
+        font-size: 2.15rem;
+        font-weight: 900;
+        color: var(--unam-blue);
+        line-height: 1.15;
+        margin-bottom: 10px;
+        letter-spacing: -0.5px;
+        text-shadow: 0 2px 4px rgba(0,0,0,0.05);
+      }
+
+      .edition-tag {
+        display: inline-block;
+        background: var(--episi-gold);
+        color: #0b1120;
+        font-weight: 800;
+        font-size: 0.78rem;
+        padding: 3px 12px;
+        border-radius: 6px;
+        margin-bottom: 12px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+
+      .invite-text {
+        color: #334155;
+        font-size: 1.02rem;
+        line-height: 1.6;
+      }
+
+      /* Tarjeta resumen rápida */
+      .quick-specs-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 12px;
+        margin-top: 18px;
+      }
+
+      .spec-pill {
+        background: #ffffff;
+        border: 1px solid #e2e8f0;
+        border-radius: 12px;
+        padding: 10px 8px;
+        text-align: center;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+      }
+
+      .spec-pill i {
+        color: var(--unam-cyan);
+        font-size: 1.1rem;
+        margin-bottom: 4px;
+        display: block;
+      }
+
+      .spec-pill strong {
+        display: block;
+        font-size: 0.8rem;
+        color: var(--unam-blue);
+        font-weight: 700;
+      }
+
+      .spec-pill span {
+        font-size: 0.72rem;
+        color: var(--text-muted);
+      }
+
+      /* Botones de acción pantalla 1 */
+      .actions-container {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        margin-top: 26px;
+      }
+
+      .btn-accept {
+        background: linear-gradient(135deg, #0f224a 0%, #1d4ed8 50%, #0284c7 100%);
+        color: #ffffff;
+        border: none;
+        padding: 16px 36px;
+        font-family: "Montserrat", sans-serif;
+        font-size: 1.05rem;
+        font-weight: 800;
+        border-radius: 50px;
+        cursor: pointer;
+        box-shadow: 0 10px 25px rgba(29, 78, 216, 0.4);
+        transition: var(--transition);
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+
+      .btn-accept:hover {
+        transform: translateY(-3px) scale(1.02);
+        box-shadow: 0 15px 32px rgba(29, 78, 216, 0.55);
+        background: linear-gradient(135deg, #1e3a8a 0%, #0284c7 100%);
+      }
+
+      .btn-secondary-rsvp {
+        background: #f1f5f9;
+        color: #0f172a;
+        border: 1.5px solid #cbd5e1;
+        padding: 12px 24px;
+        font-family: "Poppins", sans-serif;
+        font-size: 0.92rem;
+        font-weight: 600;
+        border-radius: 50px;
+        cursor: pointer;
+        transition: var(--transition);
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+      }
+
+      .btn-secondary-rsvp:hover {
+        background: #e2e8f0;
+        border-color: #94a3b8;
+        color: #0f224a;
+        transform: translateY(-2px);
+      }
+
+      .btn-secondary-rsvp i {
+        color: #25d366;
+        font-size: 1.1rem;
+      }
+
+      .creator-credit {
+        margin-top: 26px;
+        padding-top: 18px;
+        border-top: 1px solid #e2e8f0;
+        font-size: 0.85rem;
+        color: var(--text-muted);
+      }
+
+      .creator-credit span {
+        font-weight: 700;
+        color: var(--unam-blue);
+      }
+
+      /* =========================================================
+         PANTALLA 2: PORTAL MODERNO DEL EVENTO
+      ========================================================== */
+      #event-page {
+        display: none;
+        background-color: var(--light-bg);
+        min-height: 100vh;
+        animation: fadeIn 0.6s ease forwards;
+      }
+
+      @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(15px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+
+      /* Navbar */
+      .navbar {
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(14px);
+        padding: 14px 6%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+        border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+      }
+
+      .nav-brand {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+      }
+
+      .nav-brand img {
+        height: 44px;
+        width: auto;
+      }
+
+      .nav-brand-text {
+        font-family: "Montserrat", sans-serif;
+        font-weight: 800;
+        font-size: 1.05rem;
+        color: var(--unam-blue);
+        line-height: 1.15;
+      }
+
+      .nav-brand-text small {
+        display: block;
+        font-size: 0.74rem;
+        font-weight: 600;
+        color: #0284c7;
+      }
+
+      .nav-links {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+      }
+
+      .nav-links a {
+        text-decoration: none;
+        color: #334155;
+        font-weight: 600;
+        font-size: 0.88rem;
+        transition: color 0.2s;
+      }
+
+      .nav-links a:hover {
+        color: #0284c7;
+      }
+
+      .btn-nav-rsvp {
+        background: #25d366;
+        color: white !important;
+        padding: 8px 18px;
+        border-radius: 50px;
+        font-weight: 700 !important;
+        font-size: 0.82rem !important;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
+      }
+
+      .btn-nav-rsvp:hover {
+        background: #1ebd5a;
+        transform: translateY(-2px);
+      }
+
+      .btn-back {
+        background: transparent;
+        border: 1.5px solid #cbd5e1;
+        color: var(--text-muted);
+        padding: 8px 16px;
+        border-radius: 50px;
+        font-size: 0.84rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: var(--transition);
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+      }
+
+      .btn-back:hover {
+        border-color: var(--unam-blue);
+        color: var(--unam-blue);
+        background: #f1f5f9;
+      }
+
+      /* Hero Section */
+      .hero {
+        background: 
+          radial-gradient(circle at top right, rgba(0, 210, 255, 0.16) 0%, transparent 50%),
+          linear-gradient(135deg, #09152e 0%, #0d1e44 50%, #070d19 100%);
+        color: white;
+        padding: 65px 5% 95px;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .hero::after {
+        content: "";
+        position: absolute;
+        bottom: -50px;
+        left: 0;
+        right: 0;
+        height: 100px;
+        background: var(--light-bg);
+        transform: skewY(-2deg);
+      }
+
+      .hero-tag {
+        background: rgba(0, 210, 255, 0.15);
+        border: 1px solid var(--unam-cyan);
+        color: #7dd3fc;
+        padding: 7px 20px;
+        border-radius: 50px;
+        font-size: 0.86rem;
+        font-weight: 700;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        margin-bottom: 20px;
+        box-shadow: 0 0 15px rgba(0, 210, 255, 0.2);
+      }
+
+      .hero h1 {
+        font-family: "Montserrat", sans-serif;
+        font-size: clamp(2.1rem, 5vw, 3.4rem);
+        font-weight: 900;
+        margin-bottom: 14px;
+        letter-spacing: -0.5px;
+        line-height: 1.15;
+      }
+
+      .hero h1 span {
+        background: linear-gradient(135deg, #ffffff 40%, var(--episi-gold) 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      .hero p {
+        max-width: 720px;
+        margin: 0 auto 28px;
+        color: #cbd5e1;
+        font-size: 1.05rem;
+        line-height: 1.6;
+      }
+
+      /* Countdown Timer */
+      .countdown-wrapper {
+        margin: 25px auto 35px;
+        max-width: 580px;
+      }
+
+      .countdown-title {
+        font-size: 0.82rem;
+        font-weight: 700;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        color: var(--episi-gold);
+        margin-bottom: 12px;
+      }
+
+      .countdown-boxes {
+        display: flex;
+        justify-content: center;
+        gap: 14px;
+        flex-wrap: wrap;
+      }
+
+      .countdown-box {
+        background: rgba(255, 255, 255, 0.08);
+        border: 1px solid rgba(255, 255, 255, 0.16);
+        backdrop-filter: blur(10px);
+        padding: 12px 18px;
+        border-radius: 16px;
+        min-width: 82px;
+        text-align: center;
+        box-shadow: 0 6px 16px rgba(0,0,0,0.25);
+      }
+
+      .countdown-number {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 1.8rem;
+        font-weight: 800;
+        color: #ffffff;
+        line-height: 1;
+      }
+
+      .countdown-label {
+        font-size: 0.68rem;
+        font-weight: 600;
+        color: #94a3b8;
+        text-transform: uppercase;
+        margin-top: 4px;
+      }
+
+      .hero-highlights {
+        display: flex;
+        justify-content: center;
+        gap: 16px;
+        flex-wrap: wrap;
+        position: relative;
+        z-index: 2;
+      }
+
+      .highlight-pill {
+        background: rgba(255, 255, 255, 0.09);
+        backdrop-filter: blur(10px);
+        padding: 12px 22px;
+        border-radius: 14px;
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 0.92rem;
+        font-weight: 500;
+      }
+
+      .highlight-pill i {
+        color: var(--episi-gold);
+        font-size: 1.15rem;
+      }
+
+      /* Container Global */
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 40px 20px 80px;
+      }
+
+      /* Section Headers */
+      .section-header {
+        text-align: center;
+        margin-bottom: 42px;
+        position: relative;
+      }
+
+      .section-badge {
+        display: inline-block;
+        background: rgba(2, 132, 199, 0.1);
+        color: #0284c7;
+        font-size: 0.8rem;
+        font-weight: 700;
+        padding: 4px 14px;
+        border-radius: 50px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 8px;
+      }
+
+      .section-header h2 {
+        font-family: "Montserrat", sans-serif;
+        font-size: 2rem;
+        font-weight: 900;
+        color: var(--unam-blue);
+        margin-bottom: 8px;
+        letter-spacing: -0.5px;
+      }
+
+      .section-header p {
+        color: var(--text-muted);
+        font-size: 1rem;
+        max-width: 650px;
+        margin: 0 auto;
+      }
+
+      /* =========================================================
+         SECCIÓN 1: CRONOGRAMA & LÍNEA DE TIEMPO
+      ========================================================== */
+      .schedule-card {
+        background: white;
+        border-radius: var(--radius-lg);
+        padding: 22px;
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.05);
+        margin-bottom: 45px;
+        border: 1px solid #e2e8f0;
+        text-align: center;
+      }
+
+      .schedule-card img {
+        width: 100%;
+        height: auto;
+        border-radius: 14px;
+        cursor: zoom-in;
+        transition: transform 0.3s ease;
+      }
+
+      .schedule-card img:hover {
+        transform: scale(1.008);
+      }
+
+      .zoom-hint {
+        display: inline-block;
+        margin-top: 14px;
+        font-size: 0.86rem;
+        color: #0284c7;
+        font-weight: 600;
+      }
+
+      /* Key events mini-timeline */
+      .mini-timeline-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 20px;
+        margin-bottom: 60px;
+      }
+
+      .timeline-box {
+        background: white;
+        border-radius: 18px;
+        padding: 22px;
+        border: 1px solid #e2e8f0;
+        border-left: 4px solid var(--unam-blue);
+        box-shadow: 0 6px 18px rgba(0,0,0,0.03);
+        transition: var(--transition);
+      }
+
+      .timeline-box:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 14px 28px rgba(15, 34, 74, 0.08);
+        border-left-color: var(--unam-cyan);
+      }
+
+      .timeline-box.featured {
+        border-left-color: var(--episi-gold);
+        background: linear-gradient(180deg, #fffdfa 0%, #ffffff 100%);
+      }
+
+      .timeline-date-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        background: #f1f5f9;
+        color: var(--unam-blue);
+        font-size: 0.76rem;
+        font-weight: 700;
+        padding: 4px 10px;
+        border-radius: 6px;
+        margin-bottom: 12px;
+      }
+
+      .timeline-box h3 {
+        font-family: "Montserrat", sans-serif;
+        font-size: 1.12rem;
+        font-weight: 800;
+        color: var(--unam-blue);
+        margin-bottom: 6px;
+      }
+
+      .timeline-box p {
+        font-size: 0.88rem;
+        color: var(--text-muted);
+        line-height: 1.5;
+      }
+
+      /* =========================================================
+         SECCIÓN 2: ACTIVIDADES Y COMPETENCIAS DE ANIVERSARIO
+      ========================================================== */
+      .activities-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 24px;
+        margin-bottom: 70px;
+      }
+
+      .activity-card {
+        background: white;
+        border-radius: 20px;
+        padding: 28px 22px;
+        text-align: center;
+        border: 1px solid #e2e8f0;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.03);
+        transition: var(--transition);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .activity-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 20px 40px rgba(15, 34, 74, 0.1);
+        border-color: #93c5fd;
+      }
+
+      .activity-icon-wrapper {
+        width: 64px;
+        height: 64px;
+        margin: 0 auto 18px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.6rem;
+        background: #f0f9ff;
+        color: #0284c7;
+        transition: var(--transition);
+      }
+
+      .activity-card:hover .activity-icon-wrapper {
+        background: linear-gradient(135deg, var(--unam-blue) 0%, #0284c7 100%);
+        color: white;
+        transform: scale(1.1) rotate(5deg);
+      }
+
+      .activity-card h3 {
+        font-family: "Montserrat", sans-serif;
+        font-size: 1.15rem;
+        font-weight: 800;
+        color: var(--unam-blue);
+        margin-bottom: 8px;
+      }
+
+      .activity-card p {
+        font-size: 0.86rem;
+        color: var(--text-muted);
+        line-height: 1.5;
+      }
+
+      .activity-tag {
+        display: inline-block;
+        margin-top: 14px;
+        font-size: 0.72rem;
+        font-weight: 700;
+        color: #0369a1;
+        background: #e0f2fe;
+        padding: 4px 10px;
+        border-radius: 50px;
+      }
+
+      /* =========================================================
+         SECCIÓN 3: FLYERS INFORMATIVOS
+      ========================================================== */
+      .flyers-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 28px;
+        margin-bottom: 75px;
+      }
+
+      .flyer-item {
+        background: white;
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+        border: 1px solid #e2e8f0;
+        transition: var(--transition);
+        display: flex;
+        flex-direction: column;
+      }
+
+      .flyer-item:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 20px 40px rgba(15, 34, 74, 0.12);
+      }
+
+      .flyer-img-wrapper {
+        position: relative;
+        overflow: hidden;
+        aspect-ratio: 1 / 1;
+        background: #f1f5f9;
+        cursor: zoom-in;
+      }
+
+      .flyer-img-wrapper img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s ease;
+      }
+
+      .flyer-item:hover .flyer-img-wrapper img {
+        transform: scale(1.06);
+      }
+
+      .flyer-badge-overlay {
+        position: absolute;
+        bottom: 12px;
+        right: 12px;
+        background: rgba(15, 23, 42, 0.78);
+        backdrop-filter: blur(6px);
+        color: white;
+        font-size: 0.72rem;
+        font-weight: 600;
+        padding: 4px 10px;
+        border-radius: 50px;
+        pointer-events: none;
+      }
+
+      .flyer-caption {
+        padding: 20px;
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+
+      .flyer-caption h3 {
+        font-family: "Montserrat", sans-serif;
+        font-size: 1.08rem;
+        font-weight: 800;
+        color: var(--unam-blue);
+        margin-bottom: 6px;
+      }
+
+      .flyer-caption p {
+        font-size: 0.86rem;
+        color: var(--text-muted);
+        line-height: 1.5;
+      }
+
+      /* =========================================================
+         SECCIÓN 4: UBICACIÓN Y CÓMO LLEGAR (GOOGLE MAPS)
+      ========================================================== */
+      .location-section {
+        background: white;
+        border-radius: var(--radius-xl);
+        padding: 42px 35px;
+        box-shadow: 0 20px 45px rgba(0, 0, 0, 0.05);
+        border: 1px solid #e2e8f0;
+        margin-bottom: 75px;
+      }
+
+      .location-grid {
+        display: grid;
+        grid-template-columns: 1fr 1.25fr;
+        gap: 36px;
+        align-items: center;
+      }
+
+      .location-info h3 {
+        font-family: "Montserrat", sans-serif;
+        font-size: 1.4rem;
+        font-weight: 800;
+        color: var(--unam-blue);
+        margin-bottom: 14px;
+      }
+
+      .location-info p {
+        color: #475569;
+        font-size: 0.95rem;
+        margin-bottom: 22px;
+      }
+
+      .location-specs-list {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+        margin-bottom: 26px;
+      }
+
+      .location-specs-list li {
+        display: flex;
+        align-items: flex-start;
+        gap: 12px;
+        font-size: 0.9rem;
+        color: #334155;
+      }
+
+      .location-specs-list li i {
+        color: #0284c7;
+        font-size: 1.1rem;
+        margin-top: 3px;
+        flex-shrink: 0;
+      }
+
+      .btn-maps {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        background: #ea4335;
+        color: white;
+        text-decoration: none;
+        padding: 14px 26px;
+        border-radius: 50px;
+        font-weight: 700;
+        font-size: 0.94rem;
+        box-shadow: 0 8px 20px rgba(234, 67, 53, 0.3);
+        transition: var(--transition);
+      }
+
+      .btn-maps:hover {
+        background: #d93025;
+        transform: translateY(-3px);
+        box-shadow: 0 12px 25px rgba(234, 67, 53, 0.45);
+      }
+
+      .map-wrapper {
+        border-radius: 20px;
+        overflow: hidden;
+        border: 1px solid #cbd5e1;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        height: 380px;
+        position: relative;
+        background: #e2e8f0;
+      }
+
+      .map-wrapper iframe {
+        width: 100%;
+        height: 100%;
+        border: 0;
+      }
+
+      /* =========================================================
+         SECCIÓN 5: FORMULARIO DE REGISTRO & ASISTENCIA WHATSAPP
+      ========================================================== */
+      .rsvp-section {
+        background: 
+          radial-gradient(circle at 10% 20%, rgba(0, 210, 255, 0.12) 0%, transparent 40%),
+          radial-gradient(circle at 90% 80%, rgba(37, 211, 102, 0.1) 0%, transparent 40%),
+          linear-gradient(135deg, #09152e 0%, #0d1e44 100%);
+        color: white;
+        border-radius: var(--radius-xl);
+        padding: 55px 40px;
+        box-shadow: 0 25px 60px rgba(15, 34, 74, 0.25);
+        margin-bottom: 70px;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .rsvp-container {
+        max-width: 720px;
+        margin: 0 auto;
+        position: relative;
+        z-index: 2;
+      }
+
+      .rsvp-header {
+        text-align: center;
+        margin-bottom: 35px;
+      }
+
+      .rsvp-header .badge-rsvp {
+        background: rgba(37, 211, 102, 0.2);
+        color: #4ade80;
+        border: 1px solid rgba(37, 211, 102, 0.4);
+        padding: 5px 16px;
+        border-radius: 50px;
+        font-size: 0.8rem;
+        font-weight: 700;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        margin-bottom: 12px;
+      }
+
+      .rsvp-header h2 {
+        font-family: "Montserrat", sans-serif;
+        font-size: 2.2rem;
+        font-weight: 900;
+        margin-bottom: 8px;
+        letter-spacing: -0.5px;
+      }
+
+      .rsvp-header p {
+        color: #94a3b8;
+        font-size: 0.98rem;
+      }
+
+      .rsvp-form {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        background: rgba(255, 255, 255, 0.05);
+        backdrop-filter: blur(12px);
+        padding: 34px 28px;
+        border-radius: 20px;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+      }
+
+      .form-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 18px;
+      }
+
+      .form-group {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        text-align: left;
+      }
+
+      .form-group label {
+        font-size: 0.88rem;
+        font-weight: 600;
+        color: #e2e8f0;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .form-group label i {
+        color: var(--unam-cyan);
+      }
+
+      .form-group input,
+      .form-group select,
+      .form-group textarea {
+        background: rgba(15, 23, 42, 0.7);
+        border: 1.5px solid rgba(255, 255, 255, 0.15);
+        color: #ffffff;
+        font-family: "Poppins", sans-serif;
+        font-size: 0.94rem;
+        padding: 13px 16px;
+        border-radius: 12px;
+        transition: var(--transition);
+        outline: none;
+      }
+
+      .form-group select option {
+        background: #0f172a;
+        color: #ffffff;
+      }
+
+      .form-group input:focus,
+      .form-group select:focus,
+      .form-group textarea:focus {
+        border-color: var(--unam-cyan);
+        background: rgba(15, 23, 42, 0.95);
+        box-shadow: 0 0 0 4px rgba(0, 210, 255, 0.2);
+      }
+
+      .form-group textarea {
+        resize: vertical;
+        min-height: 80px;
+      }
+
+      .btn-whatsapp-submit {
+        background: linear-gradient(135deg, #25d366 0%, #128c7e 100%);
+        color: #ffffff;
+        border: none;
+        padding: 16px 28px;
+        border-radius: 50px;
+        font-family: "Montserrat", sans-serif;
+        font-size: 1.05rem;
+        font-weight: 800;
+        cursor: pointer;
+        transition: var(--transition);
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        box-shadow: 0 10px 25px rgba(37, 211, 102, 0.35);
+        text-transform: uppercase;
+        letter-spacing: 0.8px;
+        margin-top: 10px;
+      }
+
+      .btn-whatsapp-submit:hover {
+        transform: translateY(-3px) scale(1.02);
+        box-shadow: 0 15px 32px rgba(37, 211, 102, 0.5);
+        background: linear-gradient(135deg, #20ba5a 0%, #0d6e63 100%);
+      }
+
+      .rsvp-footer-note {
+        text-align: center;
+        font-size: 0.82rem;
+        color: #94a3b8;
+        margin-top: 12px;
+      }
+
+      .rsvp-footer-note strong {
+        color: #4ade80;
+      }
+
+      /* =========================================================
+         FOOTER Y REDES SOCIALES
+      ========================================================== */
+      footer {
+        background: #091122;
+        color: white;
+        padding: 60px 5% 30px;
+        text-align: center;
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+      }
+
+      .footer-title {
+        font-family: "Montserrat", sans-serif;
+        font-size: 1.35rem;
+        font-weight: 800;
+        margin-bottom: 8px;
+      }
+
+      .footer-subtitle {
+        color: #94a3b8;
+        font-size: 0.92rem;
+        margin-bottom: 32px;
+      }
+
+      .social-buttons {
+        display: flex;
+        justify-content: center;
+        gap: 16px;
+        flex-wrap: wrap;
+        margin-bottom: 35px;
+      }
+
+      .social-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 13px 24px;
+        border-radius: 50px;
+        text-decoration: none;
+        color: white;
+        font-weight: 600;
+        font-size: 0.9rem;
+        transition: var(--transition);
+        box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+      }
+
+      .social-btn i {
+        font-size: 1.2rem;
+      }
+
+      .btn-fb-unam {
+        background: #1877f2;
+      }
+      .btn-fb-unam:hover {
+        background: #145dbf;
+        transform: translateY(-3px);
+      }
+
+      .btn-ig-unam {
+        background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+      }
+      .btn-ig-unam:hover {
+        opacity: 0.92;
+        transform: translateY(-3px);
+      }
+
+      .btn-fb-episi {
+        background: linear-gradient(135deg, #0284c7 0%, var(--unam-blue) 100%);
+      }
+      .btn-fb-episi:hover {
+        filter: brightness(1.1);
+        transform: translateY(-3px);
+      }
+
+      .btn-wa-direct {
+        background: #25d366;
+      }
+      .btn-wa-direct:hover {
+        background: #1eb857;
+        transform: translateY(-3px);
+      }
+
+      .footer-bottom {
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+        padding-top: 24px;
+        font-size: 0.84rem;
+        color: #64748b;
+      }
+
+      .footer-bottom strong {
+        color: #cbd5e1;
+      }
+
+      /* =========================================================
+         LIGHTBOX MODAL
+      ========================================================== */
+      .lightbox {
+        display: none;
+        position: fixed;
+        z-index: 999;
+        inset: 0;
+        background: rgba(7, 13, 26, 0.95);
+        backdrop-filter: blur(8px);
+        align-items: center;
+        justify-content: center;
+        padding: 25px;
+      }
+
+      .lightbox.active {
+        display: flex;
+        animation: fadeIn 0.3s ease;
+      }
+
+      .lightbox img {
+        max-width: 95%;
+        max-height: 90vh;
+        border-radius: 12px;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.9);
+      }
+
+      .lightbox-close {
+        position: absolute;
+        top: 20px;
+        right: 25px;
+        color: white;
+        font-size: 2.2rem;
+        cursor: pointer;
+        background: rgba(255, 255, 255, 0.1);
+        border: none;
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: var(--transition);
+      }
+
+      .lightbox-close:hover {
+        background: rgba(255, 255, 255, 0.25);
+        transform: scale(1.1);
+      }
+
+      /* =========================================================
+         RESPONSIVE STYLES
+      ========================================================== */
+      @media (max-width: 768px) {
+        .invitation-card {
+          padding: 34px 20px;
+        }
+
+        .logos-container img {
+          height: 64px;
+        }
+
+        .divider-v {
+          display: none;
+        }
+
+        .invite-heading {
+          font-size: 1.7rem;
+        }
+
+        .quick-specs-grid {
+          grid-template-columns: 1fr;
+          gap: 8px;
+        }
+
+        .nav-links {
+          display: none;
+        }
+
+        .location-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .map-wrapper {
+          height: 300px;
+        }
+
+        .form-row {
+          grid-template-columns: 1fr;
+        }
+
+        .rsvp-section {
+          padding: 38px 20px;
+        }
+
+        .social-btn {
+          width: 100%;
+          justify-content: center;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- =========================================================
+         PANTALLA 1: TARJETA DE INVITACIÓN OFICIAL (DIGITAL PASS)
+    ========================================================== -->
+    <section id="invitation-screen">
+      <div class="tech-grid"></div>
+      <div class="ambient-glow-1"></div>
+      <div class="ambient-glow-2"></div>
+
+      <div class="invitation-card">
+        <!-- Ribbon Superior -->
+        <div class="ticket-ribbon">
+          <i class="fa-solid fa-award"></i>
+          <span>Invitación Oficial • Pase Digital</span>
+        </div>
+
+        <!-- Logos Institucionales -->
+        <div class="logos-container">
+          <img
+            data-imgur-id="0ntIBuO"
+            src="https://i.imgur.com/0ntIBuO.png"
+            alt="Logo Universidad Nacional de Moquegua"
+          />
+          <div class="divider-v"></div>
+          <img
+            data-imgur-id="Bz1gQLZ"
+            src="https://i.imgur.com/Bz1gQLZ.png"
+            alt="Logo EPISI UNAM"
+          />
+        </div>
+
+        <h2 class="uni-title">Universidad Nacional de Moquegua</h2>
+        <p class="career-subtitle">
+          Escuela Profesional de Ingeniería de Sistemas e Informática
+        </p>
+
+        <!-- Bloque Principal de la Invitación -->
+        <div class="event-main-box">
+          <span class="edition-tag">⚡ 19 Años de Excelencia Académica</span>
+          <h1 class="invite-heading">XIX Aniversario EPISI 2026</h1>
+          <p class="invite-text">
+            Tienes el honor de ser invitado a la semana conmemorativa y festiva 
+            por el <strong>19° Aniversario</strong> de nuestra Escuela Profesional, 
+            con actividades deportivas, académicas y culturales que arrancan este 
+            <strong>sábado 21 de noviembre</strong> en la <strong>Filial Ilo</strong>.
+          </p>
+
+          <!-- Especificaciones rápidas -->
+          <div class="quick-specs-grid">
+            <div class="spec-pill">
+              <i class="fa-regular fa-calendar-check"></i>
+              <strong>Sábado 21 Nov</strong>
+              <span>Gran Inauguración</span>
+            </div>
+            <div class="spec-pill">
+              <i class="fa-regular fa-clock"></i>
+              <strong>08:30 a.m.</strong>
+              <span>Hora de inicio</span>
+            </div>
+            <div class="spec-pill">
+              <i class="fa-solid fa-location-dot"></i>
+              <strong>Filial Ilo</strong>
+              <span>Campos DBU & Pabellón</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Acciones principales -->
+        <div class="actions-container">
+          <button class="btn-accept" onclick="abrirEvento()">
+            <span>Aceptar y Ver Detalles</span>
+            <i class="fa-solid fa-arrow-right"></i>
+          </button>
+          <button class="btn-secondary-rsvp" onclick="irARegistroDirecto()">
+            <i class="fa-brands fa-whatsapp"></i>
+            <span>Apuntarme / Confirmar Asistencia</span>
+          </button>
+        </div>
+
+        <div class="creator-credit">
+          Invitación extendida cordialmente por: <span>Marcelo Gabriel Ramos Torres</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         PANTALLA 2: PORTAL MODERNO DEL EVENTO
+    ========================================================== -->
+    <main id="event-page">
+      <!-- Navegación Superior -->
+      <nav class="navbar">
+        <div class="nav-brand">
+          <img
+            data-imgur-id="0ntIBuO"
+            src="https://i.imgur.com/0ntIBuO.png"
+            alt="UNAM"
+          />
+          <img
+            data-imgur-id="Bz1gQLZ"
+            src="https://i.imgur.com/Bz1gQLZ.png"
+            alt="EPISI"
+          />
+          <div class="nav-brand-text">
+            EPISI - UNAM
+            <small>19° Aniversario • 2007 - 2026</small>
+          </div>
+        </div>
+
+        <div class="nav-links">
+          <a href="#cronograma">Cronograma</a>
+          <a href="#actividades">Actividades</a>
+          <a href="#flyers">Programa</a>
+          <a href="#ubicacion">Ubicación</a>
+          <a href="#registro" class="btn-nav-rsvp">
+            <i class="fa-brands fa-whatsapp"></i> Registrarme
+          </a>
+        </div>
+
+        <button class="btn-back" onclick="volverInvitacion()">
+          <i class="fa-solid fa-ticket"></i> Ver Invitación
+        </button>
+      </nav>
+
+      <!-- Hero Principal con Contador -->
+      <header class="hero">
+        <span class="hero-tag">
+          <i class="fa-solid fa-fire"></i> ¡Inauguración Oficial: Sábado 21 de Noviembre!
+        </span>
+        
+        <h1>XIX Aniversario <span>EPISI 2026</span></h1>
+        
+        <p>
+          Celebramos 19 años de liderazgo, excelencia académica, innovación tecnológica y 
+          confraternidad de la Escuela Profesional de Ingeniería de Sistemas e Informática.
+        </p>
+
+        <!-- Contador Regresivo -->
+        <div class="countdown-wrapper">
+          <div class="countdown-title">
+            <i class="fa-solid fa-stopwatch"></i> Tiempo restante para el inicio
+          </div>
+          <div class="countdown-boxes">
+            <div class="countdown-box">
+              <div class="countdown-number" id="cd-days">00</div>
+              <div class="countdown-label">Días</div>
+            </div>
+            <div class="countdown-box">
+              <div class="countdown-number" id="cd-hours">00</div>
+              <div class="countdown-label">Horas</div>
+            </div>
+            <div class="countdown-box">
+              <div class="countdown-number" id="cd-mins">00</div>
+              <div class="countdown-label">Min</div>
+            </div>
+            <div class="countdown-box">
+              <div class="countdown-number" id="cd-secs">00</div>
+              <div class="countdown-label">Seg</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Highlights -->
+        <div class="hero-highlights">
+          <div class="highlight-pill">
+            <i class="fa-regular fa-calendar"></i>
+            <span>Sábado 21 de Noviembre</span>
+          </div>
+          <div class="highlight-pill">
+            <i class="fa-regular fa-clock"></i>
+            <span>08:30 AM (Puntual)</span>
+          </div>
+          <div class="highlight-pill">
+            <i class="fa-solid fa-location-dot"></i>
+            <span>Filial Ilo - Pacocha, Moquegua</span>
+          </div>
+        </div>
+      </header>
+
+      <div class="container">
+        <!-- SECCIÓN: LÍNEA CLAVE & CRONOGRAMA -->
+        <section id="cronograma">
+          <div class="section-header">
+            <span class="section-badge">Planificación Oficial</span>
+            <h2>Cronograma de Actividades</h2>
+            <p>
+              Revisa los horarios y fechas de cada encuentro deportivo, competencia académica y actividad de confraternidad.
+            </p>
+          </div>
+
+          <!-- Mini Resumen Fechas Clave -->
+          <div class="mini-timeline-grid">
+            <div class="timeline-box featured">
+              <div class="timeline-date-badge">
+                <i class="fa-solid fa-star"></i> Sábado 21 de Noviembre
+              </div>
+              <h3>Gran Inauguración & Desfile</h3>
+              <p>
+                Concentración de códigos, desfile inaugural con mascotas y pancartas, encendido de la antorcha y primeros partidos de exhibición.
+              </p>
+            </div>
+
+            <div class="timeline-box">
+              <div class="timeline-date-badge">
+                <i class="fa-solid fa-calendar-day"></i> 22 al 27 de Noviembre
+              </div>
+              <h3>Fases Clasificatorias & Torneos</h3>
+              <p>
+                Ruedas de futsal, vóley mixto, ajedrez, hackathon y eliminatorias de e-sports en el campus universitario.
+              </p>
+            </div>
+
+            <div class="timeline-box">
+              <div class="timeline-date-badge">
+                <i class="fa-solid fa-trophy"></i> Sábado 28 y Domingo 29 Nov
+              </div>
+              <h3>Grandes Finales & Premiación</h3>
+              <p>
+                Definición de campeones por disciplina, entrega de copas, premiación por códigos y almuerzo de confraternidad.
+              </p>
+            </div>
+          </div>
+
+          <!-- Tarjeta con imagen del Cronograma ampliable -->
+          <div class="schedule-card">
+            <img
+              id="img-cronograma"
+              data-imgur-id="yUzqZJb"
+              src="https://i.imgur.com/yUzqZJb.jpeg"
+              alt="Cronograma de Actividades Aniversario EPISI 2026"
+              onclick="ampliarImagen(this.src)"
+            />
+            <span class="zoom-hint">
+              <i class="fa-solid fa-magnifying-glass-plus"></i> Haz clic sobre el cronograma para ampliar en pantalla completa
+            </span>
+          </div>
+        </section>
+
+        <!-- SECCIÓN: ACTIVIDADES Y TORNEOS DE ANIVERSARIO -->
+        <section id="actividades">
+          <div class="section-header">
+            <span class="section-badge">Programa de Aniversario</span>
+            <h2>Actividades & Torneos de Aniversario</h2>
+            <p>
+              Participa o acompáñanos en las diversas actividades deportivas, académicas y culturales preparadas por nuestro aniversario.
+            </p>
+          </div>
+
+          <div class="activities-grid">
+            <div class="activity-card">
+              <div class="activity-icon-wrapper">
+                <i class="fa-solid fa-futbol"></i>
+              </div>
+              <h3>Torneo de Futsal</h3>
+              <p>Categorías masculina y femenina. La copa más disputada con la garra de cada promoción.</p>
+              <span class="activity-tag">Canchas DBU Filial Ilo</span>
+            </div>
+
+            <div class="activity-card">
+              <div class="activity-icon-wrapper">
+                <i class="fa-solid fa-volleyball"></i>
+              </div>
+              <h3>Vóley Mixto</h3>
+              <p>Equipos combinados que demostrarán coordinación, estrategia y agilidad en cada set.</p>
+              <span class="activity-tag">Losa Deportiva Central</span>
+            </div>
+
+            <div class="activity-card">
+              <div class="activity-icon-wrapper">
+                <i class="fa-solid fa-gamepad"></i>
+              </div>
+              <h3>E-Sports & Gaming</h3>
+              <p>Torneos de Dota 2, Valorant y FIFA en laboratorios especializados de computación.</p>
+              <span class="activity-tag">Laboratorios EPISI</span>
+            </div>
+
+            <div class="activity-card">
+              <div class="activity-icon-wrapper">
+                <i class="fa-solid fa-code"></i>
+              </div>
+              <h3>Hackathon & Algoritmia</h3>
+              <p>Desafíos de programación rápida, resolución de problemas y desarrollo ágil.</p>
+              <span class="activity-tag">Pabellón Tecnológico</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- SECCIÓN: FLYERS Y PROGRAMA OFICIAL -->
+        <section id="flyers">
+          <div class="section-header">
+            <span class="section-badge">Galería Oficial</span>
+            <h2>Programa de Aniversario & Difusión</h2>
+            <p>
+              Explora los afiches y comunicados oficiales del 19° Aniversario de la Escuela Profesional.
+            </p>
+          </div>
+
+          <div class="flyers-grid">
+            <!-- Flyer 1 -->
+            <article class="flyer-item">
+              <div
+                class="flyer-img-wrapper"
+                onclick="ampliarImagen(this.querySelector('img').src)"
+              >
+                <img
+                  data-imgur-id="OofJd2D"
+                  src="https://i.imgur.com/OofJd2D.jpeg"
+                  alt="Programa de Aniversario 19 Años EPISI"
+                />
+                <span class="flyer-badge-overlay"><i class="fa-solid fa-expand"></i> Ampliar</span>
+              </div>
+              <div class="flyer-caption">
+                <div>
+                  <h3>19 Años de Excelencia</h3>
+                  <p>
+                    Programa oficial conmemorativo de la Escuela Profesional de Ingeniería de Sistemas e Informática.
+                  </p>
+                </div>
+              </div>
+            </article>
+
+            <!-- Flyer 2 -->
+            <article class="flyer-item">
+              <div
+                class="flyer-img-wrapper"
+                onclick="ampliarImagen(this.querySelector('img').src)"
+              >
+                <img
+                  data-imgur-id="VRnv2no"
+                  src="https://i.imgur.com/VRnv2no.jpeg"
+                  alt="Presentación y Programa General Noviembre"
+                />
+                <span class="flyer-badge-overlay"><i class="fa-solid fa-expand"></i> Ampliar</span>
+              </div>
+              <div class="flyer-caption">
+                <div>
+                  <h3>Presentación & Actividades</h3>
+                  <p>
+                    Palabras del Director Dr. Carlos Alberto Silva Delgado y fechas clave del 21 al 29 de noviembre.
+                  </p>
+                </div>
+              </div>
+            </article>
+
+            <!-- Flyer 3 -->
+            <article class="flyer-item">
+              <div
+                class="flyer-img-wrapper"
+                onclick="ampliarImagen(this.querySelector('img').src)"
+              >
+                <img
+                  data-imgur-id="Eg2i322"
+                  src="https://i.imgur.com/Eg2i322.jpeg"
+                  alt="Conferencia ICALTER 2026 y Autoridades"
+                />
+                <span class="flyer-badge-overlay"><i class="fa-solid fa-expand"></i> Ampliar</span>
+              </div>
+              <div class="flyer-caption">
+                <div>
+                  <h3>ICALTER 2026 & Organización</h3>
+                  <p>
+                    Conferencia Internacional (10 y 11 de diciembre), autoridades universitarias y comisión organizadora.
+                  </p>
+                </div>
+              </div>
+            </article>
+
+            <!-- Flyer 4 -->
+            <article class="flyer-item">
+              <div
+                class="flyer-img-wrapper"
+                onclick="ampliarImagen(this.querySelector('img').src)"
+              >
+                <img
+                  data-imgur-id="7d4PP8a"
+                  src="https://i.imgur.com/7d4PP8a.jpeg"
+                  alt="Universidad Nacional de Moquegua"
+                />
+                <span class="flyer-badge-overlay"><i class="fa-solid fa-expand"></i> Ampliar</span>
+              </div>
+              <div class="flyer-caption">
+                <div>
+                  <h3>Universidad Nacional de Moquegua</h3>
+                  <p>
+                    <em>"Universitas Universitarum"</em> — Formando profesionales líderes para el desarrollo tecnológico.
+                  </p>
+                </div>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <!-- =========================================================
+             SECCIÓN 4: UBICACIÓN DEL EVENTO EN GOOGLE MAPS
+        ========================================================== -->
+        <section id="ubicacion" class="location-section">
+          <div class="location-grid">
+            <div class="location-info">
+              <span class="section-badge"><i class="fa-solid fa-map-pin"></i> Sede Oficial</span>
+              <h3>¿Cómo llegar al evento?</h3>
+              <p>
+                Todas las actividades inaugurales y encuentros deportivos se desarrollarán en las instalaciones de nuestra filial en Ilo:
+              </p>
+
+              <ul class="location-specs-list">
+                <li>
+                  <i class="fa-solid fa-building-columns"></i>
+                  <div>
+                    <strong>Universidad Nacional de Moquegua (UNAM)</strong><br />
+                    Filial Ilo - Pabellón EPISI y Campos Deportivos DBU.
+                  </div>
+                </li>
+                <li>
+                  <i class="fa-solid fa-location-dot"></i>
+                  <div>
+                    <strong>Dirección:</strong><br />
+                    Urb. Ciudad Jardín S/N, Distrito de Pacocha, Ilo, Moquegua, Perú.
+                  </div>
+                </li>
+                <li>
+                  <i class="fa-solid fa-route"></i>
+                  <div>
+                    <strong>Referencias de acceso:</strong><br />
+                    A pocos minutos de la Costanera y del Malecón de Pacocha. Acceso por la puerta principal de la universidad.
+                  </div>
+                </li>
+              </ul>
+
+              <a
+                href="https://www.google.com/maps/search/?api=1&query=-17.60173,-71.34086"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="btn-maps"
+              >
+                <i class="fa-solid fa-diamond-turn-right"></i>
+                <span>Abrir en Google Maps / GPS</span>
+              </a>
+            </div>
+
+            <!-- Mapa embebido de Google Maps -->
+            <div class="map-wrapper">
+              <iframe
+                title="Ubicación UNAM Filial Ilo"
+                src="https://maps.google.com/maps?q=-17.60173,-71.34086&hl=es&z=17&output=embed"
+                loading="lazy"
+                allowfullscreen
+              ></iframe>
+            </div>
+          </div>
+        </section>
+
+        <!-- =========================================================
+             SECCIÓN 5: FORMULARIO DE REGISTRO & ENVÍO A WHATSAPP
+        ========================================================== -->
+        <section id="registro" class="rsvp-section">
+          <div class="rsvp-container">
+            <div class="rsvp-header">
+              <div class="badge-rsvp">
+                <i class="fa-brands fa-whatsapp"></i> Registro Rápido
+              </div>
+              <h2>¡Apunta tu Asistencia!</h2>
+              <p>
+                Completa tus datos en este formulario interactivo y envíalos directamente a WhatsApp para confirmar tu participación.
+              </p>
+            </div>
+
+            <form class="rsvp-form" onsubmit="enviarAWhatsApp(event)">
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="rsvp-nombre">
+                    <i class="fa-solid fa-user"></i> Nombres y Apellidos *
+                  </label>
+                  <input
+                    type="text"
+                    id="rsvp-nombre"
+                    name="nombre"
+                    placeholder="Ej. Juan Pérez Quispe"
+                    required
+                  />
+                </div>
+
+                <div class="form-group">
+                  <label for="rsvp-rol">
+                    <i class="fa-solid fa-user-tag"></i> Rol *
+                  </label>
+                  <select id="rsvp-rol" name="rol" required>
+                    <option value="" disabled selected>Selecciona tu rol...</option>
+                    <option value="Estudiante">Estudiante</option>
+                    <option value="Docente">Docente</option>
+                    <option value="Invitado">Invitado</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="rsvp-codigo">
+                  <i class="fa-solid fa-id-card"></i> Código Univ. o DNI (Opcional)
+                </label>
+                <input
+                  type="text"
+                  id="rsvp-codigo"
+                  name="codigo"
+                  placeholder="Ej. 2023104012 o DNI"
+                />
+              </div>
+
+              <div class="form-group">
+                <label for="rsvp-mensaje">
+                  <i class="fa-solid fa-comment-dots"></i> Mensaje o Saludo (Opcional)
+                </label>
+                <textarea
+                  id="rsvp-mensaje"
+                  name="mensaje"
+                  placeholder="¡Felicidades por el 19° Aniversario! / Saludos a la comisión..."
+                ></textarea>
+              </div>
+
+              <button type="submit" class="btn-whatsapp-submit">
+                <i class="fa-brands fa-whatsapp" style="font-size: 1.4rem;"></i>
+                <span>Confirmar Asistencia por WhatsApp</span>
+              </button>
+
+              <div class="rsvp-footer-note">
+                <i class="fa-solid fa-shield-halved"></i> Tu mensaje se enviará directamente al número de Marcelo Ramos: <strong>964032775</strong>
+              </div>
+            </form>
+          </div>
+        </section>
+      </div>
+
+      <!-- =========================================================
+           FOOTER CON REDES SOCIALES & CONTACTO
+      ========================================================== -->
+      <footer>
+        <h3 class="footer-title">Conéctate con Nuestra Comunidad</h3>
+        <p class="footer-subtitle">
+          Sigue las transmisiones en vivo, resultados y novedades en los canales oficiales:
+        </p>
+
+        <div class="social-buttons">
+          <a
+            href="https://www.facebook.com/UnamPeru"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="social-btn btn-fb-unam"
+          >
+            <i class="fa-brands fa-facebook"></i>
+            <span>Facebook UNAM</span>
+          </a>
+
+          <a
+            href="https://www.instagram.com/unamoficial/?hl=es"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="social-btn btn-ig-unam"
+          >
+            <i class="fa-brands fa-instagram"></i>
+            <span>Instagram UNAM</span>
+          </a>
+
+          <a
+            href="https://www.facebook.com/ing.sistemas.unam"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="social-btn btn-fb-episi"
+          >
+            <i class="fa-brands fa-facebook-f"></i>
+            <span>Facebook Carrera EPISI</span>
+          </a>
+
+          <a
+            href="https://api.whatsapp.com/send?phone=51964032775&text=Hola%20Marcelo,%20tengo%20una%20consulta%20sobre%20el%20XIX%20Aniversario%20de%20EPISI%202026."
+            target="_blank"
+            rel="noopener noreferrer"
+            class="social-btn btn-wa-direct"
+          >
+            <i class="fa-brands fa-whatsapp"></i>
+            <span>WhatsApp Marcelo Ramos</span>
+          </a>
+        </div>
+
+        <div class="footer-bottom">
+          <p>
+            © 2026 Universidad Nacional de Moquegua • Escuela Profesional de Ingeniería de Sistemas e Informática (EPISI)
+          </p>
+          <p style="margin-top: 6px">
+            Diseñado & coordinado por: <strong>Marcelo Gabriel Ramos Torres</strong> • Cel: <strong>964032775</strong>
+          </p>
+        </div>
+      </footer>
+    </main>
+
+    <!-- Visor de Imagen Ampliada (Lightbox Modal) -->
+    <div id="lightbox" class="lightbox" onclick="cerrarLightbox()">
+      <button class="lightbox-close" aria-label="Cerrar">&times;</button>
+      <img id="lightbox-img" src="" alt="Vista ampliada" />
+    </div>
+
+    <!-- =========================================================
+         SCRIPTS FUNCIONALES
+    ========================================================== -->
+    <script>
+      // 1. Respaldo automático de extensiones de Imgur si una falla
+      const extensions = [".jpg", ".png", ".jpeg"];
+      document.querySelectorAll("img[data-imgur-id]").forEach((img) => {
+        const id = img.getAttribute("data-imgur-id");
+        let attempt = 0;
+        img.addEventListener("error", () => {
+          attempt++;
+          if (attempt < extensions.length) {
+            img.src = `https://i.imgur.com/${id}${extensions[attempt]}`;
+          }
+        });
+      });
+
+      // 2. Transición Pantalla 1 -> Pantalla 2 (Abrir Evento)
+      function abrirEvento(callback) {
+        const invite = document.getElementById("invitation-screen");
+        const eventPage = document.getElementById("event-page");
+
+        // Efecto confeti de celebración al aceptar
+        dispararConfeti();
+
+        invite.style.opacity = "0";
+        invite.style.transform = "scale(0.96)";
+
+        setTimeout(() => {
+          invite.style.display = "none";
+          eventPage.style.display = "block";
+          if (callback && typeof callback === "function") {
+            callback();
+          } else {
+            window.scrollTo({ top: 0, behavior: "smooth" });
+          }
+        }, 400);
+      }
+
+      // 3. Regresar a la invitación
+      function volverInvitacion() {
+        const invite = document.getElementById("invitation-screen");
+        const eventPage = document.getElementById("event-page");
+
+        eventPage.style.display = "none";
+        invite.style.display = "flex";
+
+        setTimeout(() => {
+          invite.style.opacity = "1";
+          invite.style.transform = "scale(1)";
+        }, 50);
+      }
+
+      // 4. Ir directo al formulario de registro desde la pantalla inicial
+      function irARegistroDirecto() {
+        abrirEvento(() => {
+          const seccionRegistro = document.getElementById("registro");
+          if (seccionRegistro) {
+            seccionRegistro.scrollIntoView({ behavior: "smooth" });
+            const inputNombre = document.getElementById("rsvp-nombre");
+            if (inputNombre) inputNombre.focus();
+          }
+        });
+      }
+
+      // 5. Visor Lightbox para imágenes y cronograma
+      function ampliarImagen(src) {
+        const lightbox = document.getElementById("lightbox");
+        const lightboxImg = document.getElementById("lightbox-img");
+        lightboxImg.src = src;
+        lightbox.classList.add("active");
+      }
+
+      function cerrarLightbox() {
+        document.getElementById("lightbox").classList.remove("active");
+      }
+
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") cerrarLightbox();
+      });
+
+      // 6. Efecto Confeti usando Canvas Confetti
+      function dispararConfeti() {
+        if (typeof confetti === "function") {
+          confetti({
+            particleCount: 80,
+            spread: 70,
+            origin: { y: 0.65 },
+            colors: ["#00d2ff", "#ffb703", "#0f224a", "#25d366", "#ffffff"]
+          });
+        }
+      }
+
+      // 7. Contador regresivo dinámico hacia el evento
+      // Fecha objetivo: Sábado 21 de Noviembre de 2026 a las 08:30:00 (Hora Perú UTC-5)
+      function iniciarContador() {
+        const eventDate = new Date("2026-11-21T08:30:00-05:00").getTime();
+
+        function actualizar() {
+          const now = new Date().getTime();
+          const distance = eventDate - now;
+
+          if (distance < 0) {
+            document.getElementById("cd-days").innerText = "00";
+            document.getElementById("cd-hours").innerText = "00";
+            document.getElementById("cd-mins").innerText = "00";
+            document.getElementById("cd-secs").innerText = "00";
+            const titleEl = document.querySelector(".countdown-title");
+            if (titleEl) {
+              titleEl.innerHTML = "<i class='fa-solid fa-circle-play'></i> ¡El evento ya ha iniciado! ¡Te esperamos en Filial Ilo!";
+            }
+            return;
+          }
+
+          const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+          const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+          const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+          const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+          document.getElementById("cd-days").innerText = days < 10 ? "0" + days : days;
+          document.getElementById("cd-hours").innerText = hours < 10 ? "0" + hours : hours;
+          document.getElementById("cd-mins").innerText = minutes < 10 ? "0" + minutes : minutes;
+          document.getElementById("cd-secs").innerText = seconds < 10 ? "0" + seconds : seconds;
+        }
+
+        actualizar();
+        setInterval(actualizar, 1000);
+      }
+      iniciarContador();
+
+      // 8. Envío de Formulario a WhatsApp (Número de Marcelo Ramos: 964032775)
+      function enviarAWhatsApp(event) {
+        event.preventDefault();
+
+        const nombre = document.getElementById("rsvp-nombre").value.trim();
+        const rol = document.getElementById("rsvp-rol").value;
+        const codigo = document.getElementById("rsvp-codigo").value.trim();
+        const mensaje = document.getElementById("rsvp-mensaje").value.trim();
+
+        if (!nombre || !rol) {
+          alert("Por favor completa los campos obligatorios (*).");
+          return;
+        }
+
+        // Construir mensaje estructurado para WhatsApp
+        let texto = `*¡HOLA MARCELO! CONFIRMO MI ASISTENCIA* 🎉🏆\n`;
+        texto += `_XIX Aniversario EPISI 2026 - UNAM_\n\n`;
+        texto += `👤 *Nombre Completo:* ${nombre}\n`;
+        texto += `🏷️ *Rol:* ${rol}\n`;
+        if (codigo) {
+          texto += `🪪 *Código/DNI:* ${codigo}\n`;
+        }
+        if (mensaje) {
+          texto += `💬 *Mensaje:* ${mensaje}\n`;
+        }
+        texto += `\n📍 *Lugar:* Filial Ilo (Campos DBU & Pabellón EPISI)\n`;
+        texto += `🗓️ *Fecha:* Sábado 21 de Noviembre (08:30 AM)\n`;
+        texto += `\n_¡Nos vemos en las celebraciones del Aniversario!_ 🚀`;
+
+        // Generar enlace wa.me con prefijo internacional de Perú (+51) y número 964032775
+        const telefono = "51964032775";
+        const urlWhatsApp = `https://api.whatsapp.com/send?phone=${telefono}&text=${encodeURIComponent(texto)}`;
+
+        // Celebrar con confeti
+        dispararConfeti();
+
+        // Abrir WhatsApp en nueva pestaña o app nativa
+        window.open(urlWhatsApp, "_blank");
+      }
+    </script>
+  </body>
+</html>
